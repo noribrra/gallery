@@ -1,4 +1,4 @@
-import Photo from '../models/Photo-model.js';
+import Photo from '../models/photo-model.js';
 
 
 export async function toggleLike(req, res) {
