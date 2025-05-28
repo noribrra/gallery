@@ -1,0 +1,12 @@
+{
+  "name": "imag-gallery",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "This is a RESTful API for an **Image Gallery** built using **Node.js**, **Express**, and **MongoDB**."
+}
