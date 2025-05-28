@@ -1,5 +1,6 @@
 import Photo from '../models/Photo-model.js';
 
+
 export async function toggleLike(req, res) {
   try {
     const { id } = req.params; // معرف الصورة
