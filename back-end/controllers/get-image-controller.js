@@ -1,4 +1,4 @@
-import Photo from '../models/PhotoModel.js';
+import Image from '../models/Imag-model.js';
 
 
 export async function getPhotos(req, res) {
@@ -9,7 +9,7 @@ export async function getPhotos(req, res) {
   
       const userId = req.user?.id; // قد يكون undefined إذا لم يسجل المستخدم الدخول
         
-      const photos = await Photo.find()
+      const photos = await Image.find()
         .sort({ createdAt: -1 })
         .skip(skip)
         .limit(limit)
@@ -32,7 +32,7 @@ export async function getPhotos(req, res) {
         };
       });
   
-      const total = await Photo.countDocuments();
+      const total = await Image.countDocuments();
   
       res.status(200).json({
         currentPage: page,
@@ -56,7 +56,7 @@ export async function getPhotos(req, res) {
       const { id } = req.params;
       const userId = req.user ? req.user.id : null;
   
-      const photo = await Photo.findById(id)
+      const photo = await Image.findById(id)
         .populate('user', 'name') // عرض اسم صاحب الصورة فقط
         .lean();
   
@@ -93,7 +93,7 @@ export async function getPhotos(req, res) {
       const { userId } = req.params;
       const currentUserId = req.user?.id; // يُفترض أنك تستخدم Middleware للمصادقة يضيف req.user
        
-      const photos = await Photo.find({ user: userId })
+      const photos = await Image.find({ user: userId })
         .sort({ createdAt: -1 })
         .populate('user', 'name',) // لعرض اسم وصورة صاحب الصورة;
   
@@ -123,7 +123,7 @@ export async function getPhotos(req, res) {
     try {
       const userId = req.user.id;
         console.log(userId);
-      const photos = await Photo.find({ likes: userId })
+      const photos = await Image.find({ likes: userId })
         .sort({ createdAt: -1 })
         .populate('user', 'name'); // لعرض اسم صاحب الصورة
   

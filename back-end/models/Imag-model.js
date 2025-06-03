@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const photoSchema = new mongoose.Schema({
+const ImagSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -41,9 +41,9 @@ const photoSchema = new mongoose.Schema({
 });
 
 // ✅ خاصية ظاهرية لحساب عدد اللايكات
-photoSchema.virtual('likesCount').get(function () {
+ImagSchema.virtual('likesCount').get(function () {
   return this.likes.length;
 });
 
-const Photo = mongoose.model('Photo', photoSchema);
-export default Photo;
+const Image= mongoose.model('Photo', ImagSchema);
+export default Image;

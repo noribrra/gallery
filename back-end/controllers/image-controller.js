@@ -1,4 +1,4 @@
-import Photo from '../models/PhotoModel.js';
+import Image from '../models/Imag-model.js';
 
 import fs from 'fs';
 import path from 'path';
@@ -16,7 +16,7 @@ export async function createPhoto(req, res) {
       // 🟢 مسار الوصول للصورة عبر الإنترنت
       const imageUrl = `/images/${req.file.filename}`;
   
-      const photo = await Photo.create({
+      const photo = await Image.create({
         title,
         description,
         imageUrl,          // ← 🟢 رابط الصورة العام
@@ -30,27 +30,27 @@ export async function createPhoto(req, res) {
   }
 
 // تعديل الصورة (العنوان أو الوصف فقط)
-export async function updatePhoto  (req, res){
+export async function updatePhoto(req, res) {
   try {
     const { id } = req.params;
     const { title, description } = req.body;
 
-    const photo = await Photo.findById(id);
+    const imageDoc = await Image.findById(id); // ✅ استخدام اسم متغير مختلف
 
-    if (!photo) {
-      return res.status(404).json({ message: 'Photo not found' });
+    if (!imageDoc) {
+      return res.status(404).json({ message: 'Image not found' });
     }
 
-    if (photo.user.toString() !== req.user.id) {
-      return res.status(403).json({ message: 'Not authorized to edit this photo' });
+    if (imageDoc.user.toString() !== req.user.id) {
+      return res.status(403).json({ message: 'Not authorized to edit this image' });
     }
 
-    photo.title = title || photo.title;
-    photo.description = description || photo.description;
+    imageDoc.title = title || imageDoc.title;
+    imageDoc.description = description || imageDoc.description;
 
-    await photo.save();
+    await imageDoc.save();
 
-    res.json(photo);
+    res.json(imageDoc);
   } catch (error) {
     res.status(500).json({ message: 'Failed to update photo', error });
   }
@@ -61,7 +61,7 @@ export async function deletePhoto  (req, res) {
   try {
     const { id } = req.params;
 
-    const photo = await Photo.findById(id);
+    const photo = await Image.findById(id);
 
     if (!photo) {
       return res.status(404).json({ message: 'Photo not found' });
