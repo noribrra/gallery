@@ -1,29 +1,34 @@
-How to use
-cd back-end 
+How start project.
 
-npm install
-create file .env
+first cd back-end 
 
+create .env file
 
-Have this in it
-
-MONGO_URI=mongodb+srv://password:nor123@data.krr8ydg.mongodb.net/
+MONGO_URI=mongodb+srv://password:user@data.krr8ydg.mongodb.net/
 PORT=5000
 JWT_SECRET=secret
 
-the port shuld be 5000
-
-and if you changed you must chang the "proxy": "http://localhost:5000", in cd front-end packegr json
-
-npm start
 
 
+and next  
+cd front-end
 
-after that cd front-end 
+open package.json file 
 
-npm start
+and add this
+
+"proxy": "http://localhost:5000",
 
 
-it should work 
+after that in root 
+
+
+run this
+
+npm run install-all
+npm run build
+npm run start
+
+open this link  http://localhost:5000
 
 
