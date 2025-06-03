@@ -1,5 +1,6 @@
 import Photo from '../models/Photo-model.js';
 
+
 export async function getPhotos(req, res) {
     try {
       const page = parseInt(req.query.page) || 1;
