@@ -21,13 +21,14 @@ app.use(cors({
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-app.use('/images', express.static(path.join(process.cwd(), 'images')));
+app.use('/images', express.static(path.join(path.resolve(), 'images')));
+app.use(express.static(path.join(path.resolve(), '../front-end/build')));
+
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.sendFile(path.resolve(path.resolve(), '../front-end/build', 'index.html'));
 });
-
 
 
 
@@ -35,6 +36,11 @@ app.use("/api/auth", authrouter);
 app.use("/api/photo", imagerouter);
 app.use("/api/get/", getPhoto);
 app.use("/api/", likerouter);
+
+
+
+
+
 
 
 app.use((req, res) => {
@@ -45,6 +51,9 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: "Something broke!" });
 });
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -1,12 +1,11 @@
 {
-  "name": "imag-gallery",
+  "name": "norr-gallery",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "This is a RESTful API for an **Image Gallery** built using **Node.js**, **Express**, and **MongoDB**."
+    "install-all": "cd back-end && npm install && cd ../front-end && npm install",
+    "build": "cd front-end && npm run build",
+    "start": "cd back-end && npm start"
+  }
 }
+
