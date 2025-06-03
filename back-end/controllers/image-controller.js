@@ -1,4 +1,4 @@
-import Photo from '../models/Photo-model.js';
+import Photo from '../models/PhotoModel.js';
 
 import fs from 'fs';
 import path from 'path';
