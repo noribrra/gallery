@@ -26,7 +26,7 @@ export default function PhotoCard({ photo, isFromProfile, onEdit, onDelete }) {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = `http://localhost:5000${photo.imageUrl}`;
+    link.href = `https://gallery-dye0.onrender.com${photo.imageUrl}`;
     link.download = photo.imageUrl.split('/').pop();
     link.click();
   };
@@ -38,7 +38,7 @@ export default function PhotoCard({ photo, isFromProfile, onEdit, onDelete }) {
         className="rounded-2xl shadow-lg overflow-hidden cursor-pointer bg-white hover:scale-105 transition-transform duration-300 relative"
       >
         <img
-          src={`http://localhost:5000${photo.imageUrl}`}
+          src={`https://gallery-dye0.onrender.com${photo.imageUrl}`}
           alt={photo.title}
           className="w-full h-64 object-cover"
         />
@@ -103,7 +103,7 @@ export default function PhotoCard({ photo, isFromProfile, onEdit, onDelete }) {
             className="bg-white p-6 rounded-xl shadow-xl max-w-2xl w-full relative"
           >
             <img
-              src={`https://gallery-dye0.onrender.com${photo.imageUrl}`}
+              src={`https://gallery-dye0.onrender.com/${photo.imageUrl}`}
               alt={photo.title}
               className="w-full h-96 object-contain rounded-lg mb-4"
             />
